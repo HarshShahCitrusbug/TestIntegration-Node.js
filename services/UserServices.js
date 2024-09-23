@@ -4,6 +4,8 @@ const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
 const OAuth2 = google.auth.OAuth2
 const jwt = require('jsonwebtoken')
+const { isEmail } = require('validator');
+
 const {ROLE, NYXCIPHER_STATUS} = require('../config/constant')
 
 const User = require('../models/User')
@@ -255,6 +257,55 @@ exports.updateProfile = async (self, body) => {
     await user.updateOne(update_user)
 
     return update_user
+}
+
+/**
+ * Update email of user
+ * @param {string} self - Email of user
+ * @param {Object} body - Object contains email
+ * @returns {Promise<Object>} Updated user
+ * @throws {Error} If email is invalid
+ * @throws {Error} If user is not found
+ * @throws {Error} If User not found
+ * @throws {Error} If Email already in use
+ */
+exports.updateEmail = async (self, body) => {
+
+    const { email } = body;
+
+    if (!email) {
+        return { data: {message: 'Email is required'}, statusCode: 400 };
+    }
+
+    //Check for the validate Email address
+    if (!isEmail(email)) {
+        return { data: { message: 'Invalid email address format' }, statusCode: 400 };
+    }
+
+    try {
+        let user = await User.findOne({email: self})
+
+        if (!user) {
+            return { data: { message: 'User not found' }, statusCode: 404 };
+        }
+
+        //Check if userEmail is already in use
+        if (await User.exists({email: email})) {
+            return { data: { message: 'Email already in use' }, statusCode: 400 };
+        }
+
+        user.email = email;
+        // TODO: This needs to be discussed
+        // user.verified = false;
+
+        await user.save();
+
+        return { data: { message: 'Email updated successfully', user: user }, statusCode: 201 };
+
+    } catch (error) {
+        return { data: { message: 'Something went wrong' }, statusCode: 500 }
+    }
+
 }
 
 exports.deleteProfile = async (user) => {
