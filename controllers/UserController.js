@@ -52,6 +52,11 @@ exports.updateProfile = async (req, res) => {
     res.status(200).json(user)
 }
 
+exports.updateEmail = async (req, res) => {
+    const response = await UserServices.updateEmail(req.email, req.body)
+    res.status(response.statusCode).json(response.data);
+}
+
 exports.deleteProfile = async (req, res) => {
     // const user = await UserServices.deleteProfile(req.)
     res.status(200).json('del respond')

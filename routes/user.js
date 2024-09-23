@@ -16,6 +16,7 @@ router.delete('/me/cart/:id', AuthMiddleware([ROLE.CUSTOMER, ROLE.SPONSOR, ROLE.
 
 router.post('/me', AuthMiddleware(ROLE.CUSTOMER), UserController.saveProfile)
 router.put('/me', AuthMiddleware(ROLE.CUSTOMER), UserController.updateProfile)
+router.put('/me/updateemail', AuthMiddleware([ROLE.CUSTOMER, ROLE.SPONSOR, ROLE.OWNER]), UserController.updateEmail)
 router.delete('/me', AuthMiddleware, UserController.deleteProfile)
 
 // owner

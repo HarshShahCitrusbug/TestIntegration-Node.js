@@ -8,6 +8,7 @@
 5.  PassportJS
 6.  JWT
 7.  Nodemailer
+8.  JEST
 
 ## **Prerequisites**
 - Git
@@ -76,3 +77,6 @@ We'd like to inform you of important changes to our distribution repository [nod
 - **Installation Scripts:** Back by popular demand, the installation scripts have returned and are better than ever. See the installation instructions below for details on how to use them.
 - **RPM Package Signing Key:** The key used to sign RPM packages has changed. We now sign packages using SHA256, providing better support to the community.
 - **Questions and concerns:** To resolve questions and discuss concerns about this update we've opened this discussion space [New distribution&#39;s packages](https://github.com/nodesource/distributions/discussions/#123456)
+
+**Postman Collection**
+TestDeveloperEvaluation.postman_collection.json
