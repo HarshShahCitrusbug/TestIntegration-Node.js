@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "ea3a1fba-21c1-4a9e-9f3b-5a9a2715a31f",
+		"name": "TestDeveloperEvaluation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24156199",
+		"_collection_link": "https://gold-moon-905564.postman.co/workspace/Beyrep~dfa98a07-fc57-4c89-b38e-fc6e562abc4c/collection/24156199-ea3a1fba-21c1-4a9e-9f3b-5a9a2715a31f?action=share&source=collection_link&creator=24156199"
+	},
+	"item": [
+		{
+			"name": "http://172.30.192.1:5000/api/user/me/updateemail",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcnNoLnNoYWhAeW9wbWFpbC5jb20iLCJyb2xlIjoiQ3VzdG9tZXIiLCJpYXQiOjE3MjcxMDUyMTUsImV4cCI6MTcyNzE5MTYxNX0.KjbUhbcpfbdwwbUbRp47JG6gZwEMjzIsvNNPEthD4h8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"harsh12.shah@yopmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://172.30.192.1:5000/api/user/me/updateemail",
+					"protocol": "http",
+					"host": [
+						"172",
+						"30",
+						"192",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"me",
+						"updateemail"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
