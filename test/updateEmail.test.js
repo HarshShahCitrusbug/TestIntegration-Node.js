@@ -19,7 +19,7 @@ afterAll(async () => {
 });
 
 describe('updateEmail - Integration Test', () => {
-    const self = "harsh.shah@yopmail.com";
+    const userEmail = "harsh.shah@yopmail.com";
 
     beforeEach(async () => {
          // Create a test user
@@ -39,7 +39,7 @@ describe('updateEmail - Integration Test', () => {
     });
 
     it('should return an error if email is not provided', async () => {
-        const response = await updateEmail(self, {});
+        const response = await updateEmail(userEmail, {});
         expect(response).toEqual({
             data: { message: 'Email is required' },
             statusCode: 400,
@@ -48,7 +48,7 @@ describe('updateEmail - Integration Test', () => {
 
     it('should return an error for invalid email format', async () => {
         const invalidBody = { email: 'invalid-email' };
-        const response = await updateEmail(self, invalidBody);
+        const response = await updateEmail(userEmail, invalidBody);
         expect(response).toEqual({
             data: { message: 'Invalid email address format' },
             statusCode: 400,
@@ -58,7 +58,7 @@ describe('updateEmail - Integration Test', () => {
     it('should return an error if the email is already in use', async () => {
 
         const existingEmail = { email: 'harsh.shah@yopmail.com' };
-        const response = await updateEmail(self, existingEmail);
+        const response = await updateEmail(userEmail, existingEmail);
         expect(response).toEqual({
             data: { message: 'Email already in use' },
             statusCode: 400,
@@ -78,7 +78,7 @@ describe('updateEmail - Integration Test', () => {
     it('should update the email if all validations pass', async () => {
         const updatedEmail = { email: 'new-email@example.com' };
 
-        const response = await updateEmail(self, updatedEmail);
+        const response = await updateEmail(userEmail, updatedEmail);
         expect(response.data.user.email).toEqual(updatedEmail.email);
 
     });

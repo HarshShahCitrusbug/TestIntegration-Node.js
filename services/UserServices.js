@@ -261,15 +261,14 @@ exports.updateProfile = async (self, body) => {
 
 /**
  * Update email of user
- * @param {string} self - Email of user
+ * @param {string} userEmail - Email of user
  * @param {Object} body - Object contains email
  * @returns {Promise<Object>} Updated user
  * @throws {Error} If email is invalid
  * @throws {Error} If user is not found
- * @throws {Error} If User not found
  * @throws {Error} If Email already in use
  */
-exports.updateEmail = async (self, body) => {
+exports.updateEmail = async (userEmail, body) => {
 
     const { email } = body;
 
@@ -283,7 +282,7 @@ exports.updateEmail = async (self, body) => {
     }
 
     try {
-        let user = await User.findOne({email: self})
+        let user = await User.findOne({email: userEmail})
 
         if (!user) {
             return { data: { message: 'User not found' }, statusCode: 404 };

@@ -8,6 +8,7 @@
 5.  PassportJS
 6.  JWT
 7.  Nodemailer
+8.  JEST
 
 ## **Prerequisites**
 - Git
